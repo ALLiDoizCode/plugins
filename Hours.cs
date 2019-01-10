@@ -53,7 +53,6 @@ namespace Oxide.Plugins
         {
             PrintToChat("Loaded works!");
             Puts("Loaded works!");
-
         }
 
         private void GetCallback(int code, string response, BasePlayer player)
