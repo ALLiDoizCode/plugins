@@ -50,8 +50,8 @@ namespace Oxide.Plugins
                     Puts($"Couldn't get an answer from Google!");
                     return;
                 }
-                Puts($"Google answered: {response.game_count}");
-                
+                Puts($"Google answered: {response}");
+
             }, this, RequestMethod.GET);
 
             return null;
