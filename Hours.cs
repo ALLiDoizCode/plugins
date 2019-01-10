@@ -89,7 +89,7 @@ namespace Oxide.Plugins
             Puts(code);
             if (response == null || code != 200)
             {
-                Puts($"Error: {code} - Couldn't get an answer from Google for {currentPlayer}");
+                Puts("Error");
                 return;
             }
             var json = JsonConvert.DeserializeObject<GetOwnedGamesResponse>(response);
