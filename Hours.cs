@@ -19,7 +19,6 @@ namespace Oxide.Plugins
         {
             Puts("OnPlayerSpawn works!");
             PrintToChat("OnPlayerSpawn works!");
-            Puts(player);
             Puts(player.userID.ToString());
             PrintToChat(player.userID.ToString());
             return null;
