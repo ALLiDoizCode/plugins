@@ -61,6 +61,7 @@ namespace Oxide.Plugins
         {
             PrintToChat("Loaded works!");
             Puts("Loaded works!");
+            
         }
     }
 }
