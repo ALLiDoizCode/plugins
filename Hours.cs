@@ -95,7 +95,8 @@ namespace Oxide.Plugins
             }
             var json = JsonConvert.DeserializeObject<GetOwnedGamesResponse>(response);
             var gametime = (json.Response.Games.Single(x => x.Appid == 252490).PlaytimeForever)/60;
-            Puts($"The player played {gametime} hours of rust!");
+            var gametimeString = gametime.ToString();
+            Puts($"The player played {gametimeString} hours of rust!");
         }
     }
 }
