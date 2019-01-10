@@ -24,14 +24,14 @@ namespace Oxide.Plugins
             return null;
         }
 
-        object OnPlayerTick(BasePlayer player, PlayerTick msg, bool wasPlayerStalled)
+        /* object OnPlayerTick(BasePlayer player, PlayerTick msg, bool wasPlayerStalled)
         {
             Puts("OnPlayerTick works!");
             PrintToChat("OnPlayerTick works!");
             Puts(player.userID.ToString());
             PrintToChat(player.userID.ToString());
             return null;
-        }
+        }*/
 
 
         object OnPlayerRespawn(BasePlayer player)
