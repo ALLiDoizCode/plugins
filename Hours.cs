@@ -1,4 +1,9 @@
+using Oxide.Core.Libraries.Covalence;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using UnityEngine;
 
 namespace Oxide.Plugins
 {
@@ -20,7 +25,6 @@ namespace Oxide.Plugins
         object OnUserApprove(Network.Connection connection)
         {
             PrintToChat("OnUserApprove works!");
-            Puts(connection);
             return null;
         }
 
