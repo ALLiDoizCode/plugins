@@ -6,6 +6,7 @@ using System.Text;
 using UnityEngine;
 using System.Net;
 using System.Web.Script;
+using Newtonsoft.Json;
 
 namespace Oxide.Plugins
 {
@@ -14,6 +15,34 @@ namespace Oxide.Plugins
     public class Hours : RustPlugin
     {
         void Init(){
+
+        }
+
+        public class GetOwnedGamesResponse
+        {
+            [JsonProperty("response")]
+            public Content Response { get; set; }
+
+            public class Content
+            {
+                [JsonProperty("game_count")]
+                public int GameCount { get; set; }
+
+                [JsonProperty("games")]
+                public Game[] Games { get; set; }
+            }
+
+            public class Game
+            {
+                [JsonProperty("appid")]
+                public int Appid { get; set; }
+
+                [JsonProperty("playtime_forever")]
+                public int PlaytimeForever { get; set; }
+
+                [JsonProperty("playtime_2weeks")]
+                public int? Playtime2weeks { get; set; }
+            }
 
         }
 
@@ -52,7 +81,7 @@ namespace Oxide.Plugins
         void Loaded()
         {
             PrintToChat("Loaded works!");
-            
+
             Puts("Loaded works!");
         }
 
@@ -62,11 +91,12 @@ namespace Oxide.Plugins
             Puts(code);
             if (response == null || code != 200)
             {
-                var JSONObj = new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(response);
                 Puts($"Error: {code} - Couldn't get an answer from Google for {currentPlayer}");
                 return;
             }
-            Puts($"response is: {JSONObj.response.game_count}");
+            var json = JsonConvert.DeserializeObject<GetOwnedGamesResponse>(response);
+            var gametime = (json.Response.Games.Single(x => x.Appid == 252490).PlaytimeForever)/60;
+            Puts($"The player played {gametime} hours of rust!");
         }
     }
 }
