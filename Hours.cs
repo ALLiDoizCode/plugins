@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using System.Net;
-using System.Web.Script;
 using Newtonsoft.Json;
 
 namespace Oxide.Plugins
@@ -92,7 +91,7 @@ namespace Oxide.Plugins
             if (response == null || code != 200)
             {
                 Puts($"Error: {code} - Couldn't get an answer from Google for {currentPlayer}");
-                
+
                 return;
             }
             var json = JsonConvert.DeserializeObject<GetOwnedGamesResponse>(response);
