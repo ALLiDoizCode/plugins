@@ -27,6 +27,9 @@ namespace Oxide.Plugins
         object OnPlayerTick(BasePlayer player, PlayerTick msg, bool wasPlayerStalled)
         {
             Puts("OnPlayerTick works!");
+            PrintToChat("OnPlayerTick works!");
+            Puts(player.userID.ToString());
+            PrintToChat(player.userID.ToString());
             return null;
         }
 
@@ -34,6 +37,9 @@ namespace Oxide.Plugins
         object OnPlayerRespawn(BasePlayer player)
         {
             Puts("OnPlayerRespawn works!");
+            PrintToChat("OnPlayerRespawn works!");
+            Puts(player.userID.ToString());
+            PrintToChat(player.userID.ToString());
             return null;
         }
         void Loaded()
