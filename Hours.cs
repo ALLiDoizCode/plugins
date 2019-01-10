@@ -21,7 +21,7 @@ namespace Oxide.Plugins
             PrintToChat("OnPlayerSpawn works!");
             Puts(player.userID.ToString());
             PrintToChat(player.userID.ToString());
-            player.Kick();
+            player.Kick("Over 500 Hrs");
             return null;
         }
 
@@ -41,7 +41,7 @@ namespace Oxide.Plugins
             PrintToChat("OnPlayerRespawn works!");
             Puts(player.userID.ToString());
             PrintToChat(player.userID.ToString());
-            player.Kick();
+            player.Kick("Over 500 Hrs");
             return null;
         }
         void Loaded()
