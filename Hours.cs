@@ -86,7 +86,7 @@ namespace Oxide.Plugins
         private void GetCallback(int code, string response, BasePlayer player)
         {
             string currentPlayer = player.userID.ToString();
-            Puts(code);
+            Puts(code.ToString());
             if (response == null || code != 200)
             {
                 Puts("Error");
