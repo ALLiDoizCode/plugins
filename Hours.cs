@@ -41,7 +41,18 @@ namespace Oxide.Plugins
             PrintToChat("OnPlayerRespawn works!");
             Puts(player.userID.ToString());
             PrintToChat(player.userID.ToString());
-            player.Kick("Over 500 Hrs");
+            //player.Kick("Over 500 Hrs");
+            
+            webrequest.Enqueue("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=F4DF0760BBC9094DA0F403432CEE8B31&steamid=76561197987094705&format=json", null, (code, response) =>
+            {
+                if (code != 200 || response == null)
+                {
+                    Puts($"Couldn't get an answer from Google!");
+                    return;
+                }
+                Puts($"Google answered: {response.game_count}");
+            }, this, RequestMethod.GET);
+
             return null;
         }
         void Loaded()
