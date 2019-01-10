@@ -41,7 +41,7 @@ namespace Oxide.Plugins
             PrintToChat("OnPlayerRespawn works!");
             Puts(player.userID.ToString());
             PrintToChat(player.userID.ToString());
-            player.kick();
+            player.Kick();
             return null;
         }
         void Loaded()
