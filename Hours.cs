@@ -58,7 +58,7 @@ namespace Oxide.Plugins
         private void GetCallback(int code, string response, BasePlayer player)
         {
             string currentPlayer = player.userID.ToString();
-            put(code);
+            Put(code);
             if (response == null || code != 200)
             {
                 Puts($"Error: {code} - Couldn't get an answer from Google for {currentPlayer}");
