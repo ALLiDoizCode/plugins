@@ -63,7 +63,6 @@ namespace Oxide.Plugins
                 Puts($"Error: {code} - Couldn't get an answer from Google for {currentPlayer}");
                 return;
             }
-
             Puts($"response is: {response}");
         }
     }
