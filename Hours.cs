@@ -24,6 +24,18 @@ namespace Oxide.Plugins
             return null;
         }
 
+        object OnPlayerTick(BasePlayer player, PlayerTick msg, bool wasPlayerStalled)
+        {
+            Puts("OnPlayerTick works!");
+            return null;
+        }
+
+
+        object OnPlayerRespawn(BasePlayer player)
+        {
+            Puts("OnPlayerRespawn works!");
+            return null;
+        }
         void Loaded()
         {
             PrintToChat("Loaded works!");
