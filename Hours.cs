@@ -22,7 +22,7 @@ namespace Oxide.Plugins
             PrintToChat("OnPlayerSpawn works!");
             Puts(player.userID.ToString());
             PrintToChat(player.userID.ToString());
-            player.Kick("Over 500 Hrs");
+            //player.Kick("Over 500 Hrs");
             return null;
         }
 
