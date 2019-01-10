@@ -20,9 +20,9 @@ namespace Oxide.Plugins
             Puts("OnPlayerSpawn works!");
             PrintToChat("Loaded works!");
             Puts(player.Name);
-            Puts(player.userID);
+            Puts(player.userID.ToString());
             PrintToChat(player.Name);
-            PrintToChat(player.userID);
+            PrintToChat(player.userID.ToString());
             return null;
         }
 
