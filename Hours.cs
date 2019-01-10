@@ -87,7 +87,7 @@ namespace Oxide.Plugins
             }
             var json = JsonConvert.DeserializeObject<GetOwnedGamesResponse>(response);
             var gametime = (json.Response.Games.Single(x => x.Appid == 252490).PlaytimeForever)/60;
-            if((gametime >= 100)){
+            if(gametime >= 100){
                 player.Kick("Over 100 Hrs");
             }
             var gametimeString = gametime.ToString();
