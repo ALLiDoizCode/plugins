@@ -51,6 +51,7 @@ namespace Oxide.Plugins
                     return;
                 }
                 Puts($"Google answered: {response.game_count}");
+                
             }, this, RequestMethod.GET);
 
             return null;
