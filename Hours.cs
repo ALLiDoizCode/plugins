@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using System.Net;
+using System.Web.Script;
 
 namespace Oxide.Plugins
 {
@@ -61,10 +62,11 @@ namespace Oxide.Plugins
             Puts(code);
             if (response == null || code != 200)
             {
+                var JSONObj = new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(response);
                 Puts($"Error: {code} - Couldn't get an answer from Google for {currentPlayer}");
                 return;
             }
-            Puts($"response is: {response.response.game_count}");
+            Puts($"response is: {JSONObj.response.game_count}");
         }
     }
 }
