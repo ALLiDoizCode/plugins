@@ -74,7 +74,6 @@ namespace Oxide.Plugins
             //player.Kick("Over 500 Hrs");
             
             webrequest.EnqueueGet("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=F4DF0760BBC9094DA0F403432CEE8B31&steamid=76561197987094705&format=json", (code, response) => GetCallback(code, response, player), this);
-
             return null;
         }
         void Loaded()
