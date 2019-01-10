@@ -15,16 +15,14 @@ namespace Oxide.Plugins
 
         }
 
-        void OnPlayerConnected(Network.Message packet)
+        object OnPlayerSpawn(BasePlayer player)
         {
-            PrintToChat("OnPlayerConnected works!");
-            Puts("OnPlayerConnected works!");
-            Puts(packet);
-        }
-
-        object OnUserApprove(Network.Connection connection)
-        {
-            PrintToChat("OnUserApprove works!");
+            Puts("OnPlayerSpawn works!");
+            PrintToChat("Loaded works!");
+            Puts(player.Name);
+            Puts(player.Id);
+            PrintToChat(player.Name);
+            PrintToChat(player.Id);
             return null;
         }
 
