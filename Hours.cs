@@ -9,8 +9,8 @@ using Newtonsoft.Json;
 
 namespace Oxide.Plugins
 {
-    [Info("500 hrs", "ALLiDoizCode", 0.1)]
-    [Description("Plugin that only allows players with less the 500 hrs")]
+    [Info("Hours", "ALLiDoizCode", 0.1)]
+    [Description("Plugin that only allows players with less then 100 hrs")]
     public class Hours : RustPlugin
     {
         void Init(){
@@ -48,10 +48,8 @@ namespace Oxide.Plugins
         object OnPlayerSpawn(BasePlayer player)
         {
             Puts("OnPlayerSpawn works!");
-            PrintToChat("OnPlayerSpawn works!");
             Puts(player.userID.ToString());
-            PrintToChat(player.userID.ToString());
-            //player.Kick("Over 500 Hrs");
+            webrequest.EnqueueGet("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=F4DF0760BBC9094DA0F403432CEE8B31&steamid=76561197987094705&format=json", (code, response) => GetCallback(code, response, player), this);
             return null;
         }
 
@@ -68,17 +66,12 @@ namespace Oxide.Plugins
         object OnPlayerRespawn(BasePlayer player)
         {
             Puts("OnPlayerRespawn works!");
-            PrintToChat("OnPlayerRespawn works!");
             Puts(player.userID.ToString());
-            PrintToChat(player.userID.ToString());
-            
             webrequest.EnqueueGet("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=F4DF0760BBC9094DA0F403432CEE8B31&steamid=76561197987094705&format=json", (code, response) => GetCallback(code, response, player), this);
             return null;
         }
         void Loaded()
         {
-            PrintToChat("Loaded works!");
-
             Puts("Loaded works!");
         }
 
@@ -94,7 +87,7 @@ namespace Oxide.Plugins
             var json = JsonConvert.DeserializeObject<GetOwnedGamesResponse>(response);
             var gametime = (json.Response.Games.Single(x => x.Appid == 252490).PlaytimeForever)/60;
             if(gametime >= 500){
-                player.Kick("Over 500 Hrs");
+                player.Kick("Over 100 Hrs");
             }
             var gametimeString = gametime.ToString();
             Puts($"The player played {gametimeString} hours of rust!");
