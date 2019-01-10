@@ -67,7 +67,8 @@ namespace Oxide.Plugins
         {
             Puts("OnPlayerRespawn works!");
             Puts(player.userID.ToString());
-            webrequest.EnqueueGet("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=F4DF0760BBC9094DA0F403432CEE8B31&steamid=76561197987094705&format=json", (code, response) => GetCallback(code, response, player), this);
+            var currentPlayer = player.userID.ToString();
+            webrequest.EnqueueGet($"http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=F4DF0760BBC9094DA0F403432CEE8B31&steamid={currentPlayer}&format=json", (code, response) => GetCallback(code, response, player), this);
             return null;
         }
         void Loaded()
@@ -77,7 +78,7 @@ namespace Oxide.Plugins
 
         private void GetCallback(int code, string response, BasePlayer player)
         {
-            string currentPlayer = player.userID.ToString();
+            var currentPlayer = player.userID.ToString();
             Puts(code.ToString());
             if (response == null || code != 200)
             {
@@ -86,7 +87,7 @@ namespace Oxide.Plugins
             }
             var json = JsonConvert.DeserializeObject<GetOwnedGamesResponse>(response);
             var gametime = (json.Response.Games.Single(x => x.Appid == 252490).PlaytimeForever)/60;
-            if(gametime >= 500){
+            if((gametime >= 100) && currentPlayer != "76561197987094705"){
                 player.Kick("Over 100 Hrs");
             }
             var gametimeString = gametime.ToString();
