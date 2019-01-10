@@ -44,16 +44,7 @@ namespace Oxide.Plugins
             PrintToChat(player.userID.ToString());
             //player.Kick("Over 500 Hrs");
             
-            webrequest.EnqueueGet("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=F4DF0760BBC9094DA0F403432CEE8B31&steamid=76561197987094705&format=json", null, (code, response) =>
-            {
-                if (code != 200 || response == null)
-                {
-                    Puts($"Couldn't get an answer from Google!");
-                    return;
-                }
-                Puts($"Google answered: {response}");
-
-            }, this);
+            webrequest.EnqueueGet("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=F4DF0760BBC9094DA0F403432CEE8B31&steamid=76561197987094705&format=json", (code, response) => GetCallback(code, response, player), this);
 
             return null;
         }
@@ -62,6 +53,18 @@ namespace Oxide.Plugins
             PrintToChat("Loaded works!");
             Puts("Loaded works!");
 
+        }
+
+        private void GetCallback(int code, string response, BasePlayer player)
+        {
+            string currentPlayer = player.userID.ToString();
+            if (response == null || code != 200)
+            {
+                Puts($"Error: {code} - Couldn't get an answer from Google for {currentPlayer}");
+                return;
+            }
+
+            Puts($"response is: {response}");
         }
     }
 }
